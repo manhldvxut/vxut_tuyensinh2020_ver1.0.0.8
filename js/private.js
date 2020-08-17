@@ -94,3 +94,44 @@ $(document).ready(function () {
           $(window).trigger('scroll');
     });
 });
+
+/*tracuuketqua*/
+
+//date
+        
+
+//tracu
+
+function waitingid() {
+    var wating = document.getElementById("waiting");
+
+    // kiem tra du lieu
+    if ($("#txtName").val() === "") {
+        alert("Vui long nhap ho va ten");
+        return;
+    }
+
+    if ($("#txtName").val().length < 3) {
+        alert("Vui long nhap chinh xac");
+        return;
+    }
+};
+
+
+
+
+const outputElement = document.getElementById('output_csv');
+
+function getCsvData(dataPath) {
+ const request = new XMLHttpRequest();
+ request.addEventListener('load', (event) => {
+  const response = event.target.responseText;
+  outputElement.innerHTML = response;
+ });
+ request.open('GET', dataPath, true);
+ request.send();
+}
+
+getCsvData('C:/kqtt.csv');
+
+
