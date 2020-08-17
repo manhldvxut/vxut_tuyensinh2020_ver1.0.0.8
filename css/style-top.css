@@ -1393,13 +1393,10 @@ padding: 36px 15px; }
 .form-group.p-t-15 {
     display: inline-flex;
 }
+
 div#output_csv {
-    display: block;
+    background: #fafafa;
+    height: 500px;
     position: relative;
-    z-index: 11111;
-    width: 1000px;
-    height: 50px;
-    background: red;
-    margin: auto;
-    color: #fff;
+    z-index: 111;
 }

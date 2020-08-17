@@ -665,7 +665,27 @@
     	</div>
     </section>
     
-    <div id="output_csv"></div>
+    <div id="output_csv">
+        <div class="container">
+               <div class="table-responsive">
+                <h1 align="center">Adult Nursing - Absences Informed</h1>
+                <input type="text" id="myInput" onkeyup="myFunction(this)" placeholder="Search for names..">
+
+                <table id="table">
+                <tr class="tr">
+
+
+                <br />
+                <div align="center">
+                 <button type="button" name="load_data" id="load_data" class="btn btn-info">Load Data</button>
+                </div>
+                <br />
+                <div id="employee_table">
+                </div>
+               </div>
+              </div>
+
+    </div>
     
 </main>
 <footer>

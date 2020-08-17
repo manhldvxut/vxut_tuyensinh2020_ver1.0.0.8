@@ -120,7 +120,7 @@ function waitingid() {
 
 
 
-const outputElement = document.getElementById('output_csv');
+/*const outputElement = document.getElementById('output_csv');
 
 function getCsvData(dataPath) {
  const request = new XMLHttpRequest();
@@ -132,6 +132,33 @@ function getCsvData(dataPath) {
  request.send();
 }
 
-getCsvData('C:/kqtt.csv');
+getCsvData('kqtt.csv');
+*/
 
+$(document).ready(function() {
+ // AJAX in the data file
+    $.ajax({
+        type: "GET",
+        url: "kqtt.csv",
+        dataType: "text",
+        success: function(data) {processData(data);}
+        });
 
+    // Let's process the data from the data file
+    function processData(data) {
+
+      var str = data.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
+        var lines = data.split(/\r\n|\n/);
+
+        //Set up the data array
+
+        for (var j=1; j<lines.length; j++) {
+           var STT = data.split(',')[0];
+            var HoTen = data.split(',')[1];
+            var Ngaysinh = data.split(',')[2];
+            var data3 = data.split(',')[3];
+        }
+
+    // For display
+    }
+})
