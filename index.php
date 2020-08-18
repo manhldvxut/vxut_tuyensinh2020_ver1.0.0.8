@@ -595,98 +595,92 @@
             </div>
         </div>
     </section>
-    
     <section id="tracuu">
     	<div class="container">
-    		<div class="content noidung content-block">
-	            <div class="col-sm-12 text-center m-b-20">
-	                <h4 class="text-bold text-red">KẾT QUẢ XÉT TUYỂN HỌC BẠ THPT</h4>
+    		<div class="tc_ts">
+	            <h4 class="text-center">KẾT QUẢ XÉT TUYỂN TRƯỜNG ĐẠI HỌC CÔNG NGHỆ VẠN XUÂN</h4>
+	            <div class="tc_ts_from text-center">
+                    <input id="txtName" type="text" value="" class="form-control input-search" placeholder="Nhập Họ tên">
+                    <div class="form-group tc_list">
+                        <label class="label-date">Ngày sinh</label>
+                        <select id="txtNgaySinhDay" class="form-control input-datesplit">
+                            <option value="01" selected="">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                        </select>
+                        <select id="txtNgaySinhMonth" class="form-control input-datesplit">
+                            <option value="01" selected="">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                        <select id="txtNgaySinhYear" class="form-control input-datesplit-y">
+                            <option value="2000">2000</option>
+                            <option value="2001">2001</option>
+                            <option value="2002" selected="">2002</option>
+                            <option value="2003">2003</option>
+                            <option value="2004">2004</option>
+                            <option value="2005">2005</option>
+                            <option value="2006">2006</option>
+                            <option value="2007">2007</option>
+                            <option value="2008">2008</option>
+                            <option value="2009">2009</option>
+                            <option value="2010">2010</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input id="btnGetTime" type="button" class="btn" value="Xem kết quả" onclick="waitingid()">
+                    </div>
+                </div>
+                <div class="text-center note">
+                    Ví dụ: Thí sinh <b>Nguyễn Văn A</b>, sinh ngày <b>01/01/2002</b> nhập Nguyễn Văn A ở ô họ tên và chọn chính xác ngày sinh
+                </div>
+	            <div class="col-sm-12 thongbao" id="thongbao">
 	            </div>
-	            <div class="col-sm-8 col-sm-offset-2">
-	                <div class="text-center question-block">
-	                    <div id="active" class="text-center" style="display: block;">
-	                        <input id="txtName" type="text" value="" class="form-control input-search" placeholder="Nhập Họ tên">
-	                        <div class="form-group p-t-15">
-	                            <label class="label-date">Ngày sinh</label>
-	                           <input type="" name="input1" placeholder="DD/MM/YYYY" required pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" title="Enter a date in this formart DD-MM-YYYY"/>
-
-	                        </div>
-	                        <div class="form-group">
-	                            <input id="btnGetTime" type="button" class="btn btn-primary" value="Xem kết quả" onclick="waitingid()">
-	                        </div>
-	                    </div>
-	                    <div id="inactive" style="display:none;">
-	                        <div class="form-group">
-	                            <label class="red">Dữ liệu đang được cập nhật ...</label>
-	                        </div>
-	                        <input id="txtName" type="text" value="" class="form-control input-search" placeholder="Nhập Họ tên" disabled="">
-	                        <p>&nbsp;</p>
-	                        <div class="form-group">
-	                            <label class="label-date">Ngày sinh</label>
-	                            <select id="txtNgaySinhDay" class="form-control input-datesplit" disabled="">
-	                                <option value="01">01</option>
-	                            </select>
-	                            <select id="txtNgaySinhMonth" class="form-control input-datesplit" disabled="">
-	                                <option value="01">01</option>
-	                            </select>
-	                            <select id="txtNgaySinhYear" class="form-control input-datesplit-y" disabled="">
-	                                <option value="2002" selected="">2002</option>
-	                            </select>
-	                        </div>
-	                        <div class="form-group">
-	                            <input id="btnGetTime" type="button" class="btn btn-primary" value="Xem kết quả" disabled="">
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="col-sm-8 col-sm-offset-2 text-center">
-	                <asp:label runat="server" id="lb_error" cssclass="red"></asp:label>
-	                <p>Thí sinh xét tuyển theo kết quả xét học bạ THPT nhập họ tên và
-	                    ngày tháng năm sinh
-	                </p>
-	                <p>
-	                    Ví dụ: Thí sinh <b>Nguyễn Văn A</b>, sinh ngày <b>01/01/2002</b> nhập Nguyễn Văn A ở ô
-	                    họ tên và chọn chính xác ngày sinh
-	                </p>
-	            </div>
-	            <div class="col-sm-12 text-center">
-	                <p>
-	                    <i>Nếu không xem được, vui lòng liên hệ <b style="color:#066fc7;">(028) 5445 2222</b> để
-	                        được hỗ trợ</i>
-	                </p>
-	            </div>
-	            <div class="col-sm-12">
-	                <span id="content" class="result-block"></span>
-	            </div>
-	            <div class="col-sm-12 thongbao" id="thongbao" style="display:none;">
-	                <panel id="panelHTMLThongBao"></panel>
-	            </div>
+                <div id="waiting">
+                    <span>
+                        <img src="images/top/wait.gif" alt="">
+                    </span>
+                </div>
 	        </div>
     	</div>
     </section>
-    
-    <div id="output_csv">
-        <div class="container">
-               <div class="table-responsive">
-                <h1 align="center">Adult Nursing - Absences Informed</h1>
-                <input type="text" id="myInput" onkeyup="myFunction(this)" placeholder="Search for names..">
-
-                <table id="table">
-                <tr class="tr">
-
-
-                <br />
-                <div align="center">
-                 <button type="button" name="load_data" id="load_data" class="btn btn-info">Load Data</button>
-                </div>
-                <br />
-                <div id="employee_table">
-                </div>
-               </div>
-              </div>
-
-    </div>
-    
 </main>
 <footer>
     <a id="back_to_top" href="javascript:void(0)" class="on">

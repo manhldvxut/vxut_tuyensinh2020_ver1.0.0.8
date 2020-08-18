@@ -1350,53 +1350,69 @@ padding: 36px 15px; }
 }
 
 /*tra cuu*/
-
-.content .noidung {
-    margin: 0 auto;
-    overflow: hidden;
-}
-
-.content-block {
-    margin: 0;
-    padding: 5px;
-    border-radius: 5px;
+#tracuu {
+    padding: 100px 0;
     background: #fff;
-    display: inline-block;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 1px;
+    border-radius: 15px;
+    margin-top: 100px;
+}
+.tc_ts h4 {
+    color: #000;
+    font-family: utm;
+    font-weight: bold;
+    margin-bottom: 70px;
+}
+#txtName {
+    text-align: center;
+    max-width: 290px;
+    margin: auto;
+    margin-bottom: 30px;
+    font-family: utm;
+}
+.form-group.tc_list{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    max-width: 420px;
+    margin: auto;
+    margin-bottom: 35px;
+    font-family: utm;
+}
+#txtNgaySinhDay, #txtNgaySinhMonth, #txtNgaySinhYear {
+    max-width: 100px;
+    margin-right: 10px;
+}
+label.label-date {
+    margin: auto;
+}
+input#btnGetTime {
+    font-family: utm;
+    background: #086fb2;
+    color: #fff;
+}
+.note {
+    font-family: utm;
+    margin-top: 60px;
+}
+#thongbao{
+  font-family: utm;
+  font-weight: bold;
+  color: red;
+  font-size: 17px;
+  text-align: center;
+}
+#waiting {
+    display: none;
     width: 100%;
+    top: 0px;
+    height: 100%;
+    position: fixed;
+    z-index: 98;
 }
-.question-block {
-    background-color: #fff;
-    border-radius: 2px;
-    padding: 15px;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
-    margin: 0 0 15px 0 !important;
-    transition: all ease .5s;
-}
-.form-control {
-    display: block;
-    width: 100%;
-    height: 34px;
-    padding: 3px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #555;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    border-radius: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-}
-.form-group.p-t-15 {
-    display: inline-flex;
-}
-
-div#output_csv {
-    background: #fafafa;
-    height: 500px;
-    position: relative;
-    z-index: 111;
+body #waiting span {
+    top: 40%;
+    left: 40%;
+    position: fixed;
+    z-index: 99;
 }

@@ -17,7 +17,7 @@ $(document).ready(function () {
 
     $(window).scroll(function(){    // load entry button
         if ($(this).scrollTop() > $(document).height() - $(window).height() - 900 || $(this).scrollTop() < 2000) {
-        	$('.entry').fadeOut();
+          $('.entry').fadeOut();
         }
         else {
             $('.entry').fadeIn();
@@ -97,68 +97,70 @@ $(document).ready(function () {
 
 /*tracuuketqua*/
 
-//date
-        
-
-//tracu
-
 function waitingid() {
-    var wating = document.getElementById("waiting");
+    var waiting = document.getElementById("waiting");
+    waiting.style.display = 'block';
 
     // kiem tra du lieu
     if ($("#txtName").val() === "") {
-        alert("Vui long nhap ho va ten");
+        setTimeout(function(){
+            $("#waiting").fadeOut(500);
+            alert("Vui lòng nhập Họ và Tên");
+        }, 200)
         return;
     }
 
     if ($("#txtName").val().length < 3) {
-        alert("Vui long nhap chinh xac");
+      setTimeout(function(){
+            $("#waiting").fadeOut(500);
+            alert("Họ và Tên của bạn không chính xác");
+        }, 200)
         return;
     }
+    
+    var txtName = $("#txtName").val();
+    var txtDate = $("#txtNgaySinhDay").val() + "/" + $("#txtNgaySinhMonth").val() + "/" + $("#txtNgaySinhYear").val();
+    
+    $(document).ready(function() {
+    
+      $.ajax({
+          type: "GET",
+          url: "kqts.csv",   // CSV file
+          dataType: "text",
+          success: function(data) {processData(data);}
+          });
+          
+      function processData(data) {
+      
+          var lines = data.split(/\r\n|\n/); // Dem dong
+          var HoTen = [];  // Goi Ho va Ten
+          var Ngaysinh = [];   // Goi ngay sinh
+          
+          var headings = lines[0].split(',');  // Gia tri header
+          
+          for (var j=1; j<lines.length; j++) {
+            var values = lines[j].split(',');
+            
+            HoTen = values[1];
+            Ngaysinh = values[2];
+            
+            if((HoTen == txtName ) && (Ngaysinh == txtDate)){
+
+              setTimeout(function(){
+                    $("#waiting").fadeOut(500);
+                      document.getElementById('thongbao').innerHTML = "Chúc mừng bạn đã trúng tuyển vào trường Đại học công nghệ Vạn Xuân";
+                }, 500)
+                break;
+              }
+              else{
+                setTimeout(function(){
+                    $("#waiting").fadeOut(500);
+                      document.getElementById('thongbao').innerHTML = "Dữ liệu của bạn không có, vui lòng liên hệ với số điện thoại 0969 199 722 <br> Chú ý nhập đúng họ và tên";
+                }, 500)
+                
+              }
+          }
+          
+     }
+   })
 };
-
-
-
-
-/*const outputElement = document.getElementById('output_csv');
-
-function getCsvData(dataPath) {
- const request = new XMLHttpRequest();
- request.addEventListener('load', (event) => {
-  const response = event.target.responseText;
-  outputElement.innerHTML = response;
- });
- request.open('GET', dataPath, true);
- request.send();
-}
-
-getCsvData('kqtt.csv');
-*/
-
-$(document).ready(function() {
- // AJAX in the data file
-    $.ajax({
-        type: "GET",
-        url: "kqtt.csv",
-        dataType: "text",
-        success: function(data) {processData(data);}
-        });
-
-    // Let's process the data from the data file
-    function processData(data) {
-
-      var str = data.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
-        var lines = data.split(/\r\n|\n/);
-
-        //Set up the data array
-
-        for (var j=1; j<lines.length; j++) {
-           var STT = data.split(',')[0];
-            var HoTen = data.split(',')[1];
-            var Ngaysinh = data.split(',')[2];
-            var data3 = data.split(',')[3];
-        }
-
-    // For display
-    }
-})
