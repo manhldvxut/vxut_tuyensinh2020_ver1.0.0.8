@@ -110,7 +110,7 @@ function waitingid() {
     if ($("#txtName").val() === "") {  // Du lieu trong
         setTimeout(function(){
             $("#waiting").fadeOut(500);
-            alert("Vui lﾃｲng nh蘯ｭp H盻� vﾃ� Tﾃｪn");  // Thong bao loi
+            alert("Vui lòng nhập Họ và Tên");  // Thong bao loi
         }, 200)
         return;
     }
@@ -118,7 +118,7 @@ function waitingid() {
     if ($("#txtName").val().length < 4 || $("#txtName").val().length > 50) { // Ten < 4 ky tu va lon hon 50 ky tu
       setTimeout(function(){
             $("#waiting").fadeOut(500);
-            alert("H盻� vﾃ� Tﾃｪn c盻ｧa b蘯｡n khﾃｴng chﾃｭnh xﾃ｡c");  // Thong bao loi
+            alert("Họ và Tên của bạn chưa chính xác");  // Thong bao loi
         }, 200)
         return;
     }
@@ -126,7 +126,7 @@ function waitingid() {
     if ( $("#txtNgaySinhDay").val() >= 30 &&  $("#txtNgaySinhMonth").val() == 2 ) {  // Thang 2 khong co ngay 30 va 31
     	setTimeout(function(){
             $("#waiting").fadeOut(500);
-            alert("Ng?y sinh c盻ｧa b蘯｡n khﾃｴng chﾃｭnh xﾃ｡c"); //Thong bao loi
+            alert("Ngày sinh của bạn không chính xác, vui lòng chọn lại"); //Thong bao loi
         }, 200)
         return;
     }
@@ -152,7 +152,7 @@ function waitingid() {
           error: function(data){						//Doc file khong thanh cong, File khong ton tai
           	setTimeout(function(){
 	            $("#waiting").fadeOut(500);
-	            alert("Dinh dang file loi hoac file file khong ton tai, vui long kiem tra lai file");
+	            alert("File không tồn tại, hoặc định dạng file lỗi. Vui lòng kiểm tra lại");
 	        }, 200)
 	        return;
       		}
@@ -177,14 +177,14 @@ function waitingid() {
             if((HoTen == txtName ) && (Ngaysinh == txtDate)){ // Truong hop Dung
               setTimeout(function(){   // Dua ra thong bao khi ket qua tra ve trung nhau
                     $("#waiting").fadeOut(500);
-                      document.getElementById('thongbao').innerHTML = "Chuc mung ban " + HoTen + " da trung tuyen nganh " + Nganh_trung + " truong DHCN Van Xuan ";
+                      document.getElementById('thongbao').innerHTML = "Chúc mừng bạn " + HoTen + " đã trúng tuyển vào trường ĐHCN Vạn Xuân";
                 }, 500)
                 break;  // ket thuc ket qua tim kiem
               }
             else{
                 setTimeout(function(){ // Truong hop ket qua khong trung nhau.
                     $("#waiting").fadeOut(500);
-                      document.getElementById('thongbao').innerHTML = "Chao ban " + txtName + "<br> Du lieu cua ban khong co trong he thong <br> Vui long lien he voi so dien thoai 0969 199 722 <br> De duoc biet them chi tiet";
+                      document.getElementById('thongbao').innerHTML = "Chào bạn " + txtName + "<br> Dữ liệu của bạn không có trong hệ thống <br> Vui lòng liên hệ theo số điện thoại 0969 199 722 <br> Để được biết thêm chi tiết";
                 }, 500)
                 
             }
