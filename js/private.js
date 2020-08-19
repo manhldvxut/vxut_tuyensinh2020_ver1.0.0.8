@@ -1,3 +1,9 @@
+/*
+	TRUONG DAI HOC CONG NGHE VAN XUAN
+	TUYEN SINH DAI HOC 2020
+	CODER: WSOFT9773@GMAIL.COM
+*/
+
 new WOW().init();
 
 $(document).ready(function () {
@@ -95,72 +101,104 @@ $(document).ready(function () {
     });
 });
 
-/*tracuuketqua*/
-
+/*tracuuketqua --- manh 20200819*/
+//start
 function waitingid() {
-    var waiting = document.getElementById("waiting");
-    waiting.style.display = 'block';
-
-    // kiem tra du lieu
-    if ($("#txtName").val() === "") {
+    var waiting = document.getElementById("waiting");  //Goi Id anh gif
+    waiting.style.display = 'block';  // Hien thi anh gif
+    
+    if ($("#txtName").val() === "") {  // Du lieu trong
         setTimeout(function(){
             $("#waiting").fadeOut(500);
-            alert("Vui lòng nhập Họ và Tên");
+            alert("Vui lﾃｲng nh蘯ｭp H盻� vﾃ� Tﾃｪn");  // Thong bao loi
         }, 200)
         return;
     }
 
-    if ($("#txtName").val().length < 3) {
+    if ($("#txtName").val().length < 4 || $("#txtName").val().length > 50) { // Ten < 4 ky tu va lon hon 50 ky tu
       setTimeout(function(){
             $("#waiting").fadeOut(500);
-            alert("Họ và Tên của bạn không chính xác");
+            alert("H盻� vﾃ� Tﾃｪn c盻ｧa b蘯｡n khﾃｴng chﾃｭnh xﾃ｡c");  // Thong bao loi
         }, 200)
         return;
     }
     
-    var txtName = $("#txtName").val();
-    var txtDate = $("#txtNgaySinhDay").val() + "/" + $("#txtNgaySinhMonth").val() + "/" + $("#txtNgaySinhYear").val();
+    if ( $("#txtNgaySinhDay").val() >= 30 &&  $("#txtNgaySinhMonth").val() == 2 ) {  // Thang 2 khong co ngay 30 va 31
+    	setTimeout(function(){
+            $("#waiting").fadeOut(500);
+            alert("Ng?y sinh c盻ｧa b蘯｡n khﾃｴng chﾃｭnh xﾃ｡c"); //Thong bao loi
+        }, 200)
+        return;
+    }
+       
+    var txtName = $("#txtName").val(); //Nhap ten tu form
+    
+    txtName = txtName.toLowerCase()   //Doi chu cai dau thanh chu in hoa
+	    .split(' ') //Lay du lieu sau dau ngoac
+	    .map((s) => s.charAt(0).toUpperCase() + s.substring(1)) //Chu cai dau in hoa
+	    .join(' ') // Noi dau cach
+	    .replace(/\s\s+/g, ' ')// Loai bo nhieu dau cach o giua cau
+	    .replace(/\s+$/, '');  //Loai bo dau cach sau cau
+    
+    var txtDate = $("#txtNgaySinhDay").val() + "/" + $("#txtNgaySinhMonth").val() + "/" + $("#txtNgaySinhYear").val();  //Du lieu nhap ngay thang nam sinh tu form
     
     $(document).ready(function() {
     
       $.ajax({
           type: "GET",
-          url: "kqts.csv",   // CSV file
+          url: "kqts.csv",   // Duong dan CSV file
           dataType: "text",
-          success: function(data) {processData(data);}
-          });
+          success: function(data) {processData(data);}, // Doc file thanh cong
+          error: function(data){						//Doc file khong thanh cong, File khong ton tai
+          	setTimeout(function(){
+	            $("#waiting").fadeOut(500);
+	            alert("Dinh dang file loi hoac file file khong ton tai, vui long kiem tra lai file");
+	        }, 200)
+	        return;
+      		}
+      });
           
-      function processData(data) {
+      function processData(data) {  // Khi sccess = true
       
           var lines = data.split(/\r\n|\n/); // Dem dong
           var HoTen = [];  // Goi Ho va Ten
           var Ngaysinh = [];   // Goi ngay sinh
+          var Nganh_trung = []  //Nganh trung tuyen
           
           var headings = lines[0].split(',');  // Gia tri header
           
           for (var j=1; j<lines.length; j++) {
-            var values = lines[j].split(',');
+            var values = lines[j].split(','); //lay cac gia tri trong lines
             
-            HoTen = values[1];
-            Ngaysinh = values[2];
+            HoTen = values[1]; //Du lieu ho va Ten
+            Ngaysinh = values[2];  // Du lieu nganh sinh
+            Nganh_trung = values[5]  // Du lieu nganh trung tuyen
             
-            if((HoTen == txtName ) && (Ngaysinh == txtDate)){
-
-              setTimeout(function(){
+            if((HoTen == txtName ) && (Ngaysinh == txtDate)){ // Truong hop Dung
+              setTimeout(function(){   // Dua ra thong bao khi ket qua tra ve trung nhau
                     $("#waiting").fadeOut(500);
-                      document.getElementById('thongbao').innerHTML = "Chúc mừng bạn đã trúng tuyển vào trường Đại học công nghệ Vạn Xuân";
+                      document.getElementById('thongbao').innerHTML = "Chuc mung ban " + HoTen + " da trung tuyen nganh " + Nganh_trung + " truong DHCN Van Xuan ";
                 }, 500)
-                break;
+                break;  // ket thuc ket qua tim kiem
               }
-              else{
-                setTimeout(function(){
+            else{
+                setTimeout(function(){ // Truong hop ket qua khong trung nhau.
                     $("#waiting").fadeOut(500);
-                      document.getElementById('thongbao').innerHTML = "Dữ liệu của bạn không có, vui lòng liên hệ với số điện thoại 0969 199 722 <br> Chú ý nhập đúng họ và tên";
+                      document.getElementById('thongbao').innerHTML = "Chao ban " + txtName + "<br> Du lieu cua ban khong co trong he thong <br> Vui long lien he voi so dien thoai 0969 199 722 <br> De duoc biet them chi tiet";
                 }, 500)
                 
-              }
-          }
-          
-     }
+            }
+         } 
+      }
    })
 };
+//end
+
+/*Khi ket thuc mua tuyen sinh*/
+// start
+var current = new Date();  // thoi gian hien tai
+var month = current.getMonth();  // Thang hien tai
+if((month < 5) || (month > 12)){  // thang < 5 hoac > 12 thi layout tra cuu khong hien thi
+	document.getElementById("tracuu").style.display = "none";
+}
+// End
