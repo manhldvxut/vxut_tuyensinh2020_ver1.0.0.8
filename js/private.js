@@ -202,3 +202,18 @@ if((month < 5) || (month > 12)){  // thang < 5 hoac > 12 thi layout tra cuu khon
 	document.getElementById("tracuu").style.display = "none";
 }
 // End
+
+/*Tu dong tang nam*/
+$('#txtNgaySinhYear').each(function () {
+    var year = (new Date()).getFullYear(); //Nam hien tai
+    var year_cur = year;
+    year_cur -= 17;   // Nam hien tai tru di 17 nam
+    for (var i = 0; i < 7; i++) {     // Hien thi 7 nam
+        if (year == year_cur)
+            $(this).append('<option value="' + (year_cur + i) + '">' + (year_cur + i) + '</option>');
+        else
+            $(this).append('<option selected value="' + (year_cur + i) + '">' + (year_cur + i) + '</option>');  // Ket qua tra ve hang nam
+            
+    }
+
+})
