@@ -1399,9 +1399,12 @@ input#btnGetTime {
 #thongbao{
   font-family: utm;
   font-weight: bold;
-  color: red;
-  font-size: 17px;
+  font-size: 14px;
   text-align: center;
+}
+#thongbao .table-responsive {
+    max-width: 100%; 
+    margin-top: 40px;
 }
 #waiting {
     display: none;
@@ -1416,4 +1419,14 @@ body #waiting span {
     left: 40%;
     position: fixed;
     z-index: 99;
+}
+@media (max-width: 767px) {
+    .thongbao .table.content {
+        width: 1000px;
+    }
+    .thongbao .table.content th {
+        margin-bottom: 0;
+        padding: 0
+    }
+    
 }
