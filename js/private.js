@@ -163,7 +163,11 @@ function waitingid() {
           var lines = data.split(/\r\n|\n/); // Dem dong
           var HoTen = [];  // Goi Ho va Ten
           var Ngaysinh = [];   // Goi ngay sinh
-          var Nganh_trung = []  //Nganh trung tuyen
+          var dia_chi = [];    //Goi dia chi
+          var Tohop_mon = [];  //To hop mon xet tuyen
+          var Tong_diem = [];   //Tong diem
+          var Nganh_xettuyen = []; //Nganh xet tuyen
+          var ket_qua = [];    //giay bao ket qua
           
           var headings = lines[0].split(',');  // Gia tri header
           
@@ -171,13 +175,47 @@ function waitingid() {
             var values = lines[j].split(','); //lay cac gia tri trong lines
             
             HoTen = values[1]; //Du lieu ho va Ten
-            Ngaysinh = values[2];  // Du lieu nganh sinh
-            Nganh_trung = values[5]  // Du lieu nganh trung tuyen
+              Ngaysinh = values[2];  // Du lieu nganh sinh
+              dia_chi = values[3]; // Du lieu dia chi
+              Tohop_mon = values[4];  // Du lieu To hop mon
+              Tong_diem = values[5];  // Du lieu tong diem
+              Nganh_xettuyen = values[6];  // Du lieu nganh xet tuyen
+              ket_qua = values[7];  // Du lieu link ket qua
             
-            if((HoTen == txtName ) && (Ngaysinh == txtDate)){ // Truong hop Dung
+              if ((HoTen == txtName) && (Ngaysinh == txtDate)) { // Truong hop Dung
               setTimeout(function(){   // Dua ra thong bao khi ket qua tra ve trung nhau
                     $("#waiting").fadeOut(500);
-                      document.getElementById('thongbao').innerHTML = "Chúc mừng bạn " + HoTen + " đã trúng tuyển vào trường ĐHCN Vạn Xuân";
+                  document.getElementById('thongbao').innerHTML = 
+                      "<div class='container'>" +
+                          "<div class=row>" +
+                              "<div class='table-responsive'>" +
+                                  "<table class='table content'>" +
+                                      "<thead>" +
+                                          "<tr>" +
+                                              "<th scope='col'> Họ tên </th>" +
+                                              "<th scope='col'> Ngày sinh </th>" +
+                                              "<th scope='col'> Địa chỉ </th>" +
+                                              "<th scope='col'> Tổ hợp môn xét tuyển </th>" +
+                                              "<th scope='col'> Tổng Điểm </th>" +
+                                              "<th scope='col'> Ngành xét tuyển </th>" +
+                                              "<th scope='col'> Giấy báo kết quả </th>" +
+                                          "</tr>" +
+                                      "</thead>" +
+                                      "<tbody>" +
+                                          "<tr>" +
+                                             "<td>" + HoTen + "</td>" + 
+                                              "<td>" + Ngaysinh +"</td>" +
+                                              "<td>" + dia_chi + "</td>" +
+                                              "<td>"+ Tohop_mon + "</td>" +
+                                              "<td>" + Tong_diem +"</td>" +
+                                              "<td>"+ Nganh_xettuyen +"</td>" +
+                                              "<td>" + ket_qua +"</td>" +
+                                          "</tr>" +
+                                      "</tbody>" +
+                                  "</table>" +
+                              "</div>" +
+                          "</div>" +
+                  "</div>";
                 }, 500)
                 break;  // ket thuc ket qua tim kiem
               }
@@ -202,18 +240,3 @@ if((month < 5) || (month > 12)){  // thang < 5 hoac > 12 thi layout tra cuu khon
 	document.getElementById("tracuu").style.display = "none";
 }
 // End
-
-/*Tu dong tang nam*/
-$('#txtNgaySinhYear').each(function () {
-    var year = (new Date()).getFullYear(); //Nam hien tai
-    var year_cur = year;
-    year_cur -= 17;   // Nam hien tai tru di 17 nam
-    for (var i = 0; i < 7; i++) {     // Hien thi 7 nam
-        if (year == year_cur)
-            $(this).append('<option value="' + (year_cur + i) + '">' + (year_cur + i) + '</option>');
-        else
-            $(this).append('<option selected value="' + (year_cur + i) + '">' + (year_cur + i) + '</option>');  // Ket qua tra ve hang nam
-            
-    }
-
-})
