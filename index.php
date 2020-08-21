@@ -595,10 +595,10 @@
         </div>
     </section>
     <section id="tracuu">
-    	<div class="container">
-    		<div class="tc_ts">
-	            <h4 class="text-center">KẾT QUẢ XÉT TUYỂN TRƯỜNG ĐẠI HỌC CÔNG NGHỆ VẠN XUÂN</h4>
-	            <div class="tc_ts_from text-center">
+        <div class="container">
+            <div class="tc_ts">
+                <h4 class="text-center">KẾT QUẢ XÉT TUYỂN TRƯỜNG ĐẠI HỌC CÔNG NGHỆ VẠN XUÂN</h4>
+                <div class="tc_ts_from text-center">
                     <input id="txtName" type="text" value="" class="form-control input-search" placeholder="Nhập Họ tên">
                     <div class="form-group tc_list">
                         <label class="label-date">Ngày sinh</label>
@@ -670,43 +670,55 @@
                 <div class="text-center note">
                     Ví dụ: Thí sinh <b>Nguyễn Văn A</b>, sinh ngày <b>01/01/2002</b> nhập Nguyễn Văn A ở ô họ tên và chọn chính xác ngày sinh
                 </div>
-	            <div class="col-sm-12 thongbao" id="thongbao">
-	            </div>
+                <div class="col-sm-12 thongbao" id="thongbao">
+                </div>
                 <div id="waiting">
                     <span>
                         <img src="images/top/wait.gif" alt="">
                     </span>
                 </div>
-	        </div>
-    	</div>
-    </section>
-    <section id="post" class="post_show" style="display: none;">
-        <div class="page_A4">
-            <div class="hea01"> <img style="width: 100%" src="images/top/hea01.png"></div>
-            <div class="hea02" style="background-color: #fff;">
-                <div class="container">
-                    <div class="form_info">
-                        <ul class="sele_form row">
-                            <li class="col-md-6 d-flex">
-                                <p class="d-flex" id="text_hoten"></p>
-                            </li>
-                            <li class="col-md-6 d-flex">
-                                <p class="d-flex" id="text_ngaysinh"></p>
-                            </li>
-                            <li class="col-md-6 d-flex">
-                                <p class="d-flex" id="text_diemthi"></p>
-                            </li>
-                            <li class="col-md-6 d-flex">
-                                <p class="d-flex" id="text_hinhthuc"></p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="text_nganh d-flex">Đã đạt điểm trúng tuyển bậc Đại học, hệ chính quy, ngành: <p class="d-flex" id="text_nganh"></p></div>
-                </div>
             </div>
-            <div class="hea03"><img style="width: 100%;" src="images/top/hea02.png"></div>
         </div>
-        <div class="back_top"><a href=""><img src="images/top/toppage.png" class="img-fluid" alt=""></a></div>
+    </section>
+    <section id="popup-load">
+        <button type="button" class="btn btn-primary d-none clc-popup" data-toggle="modal" data-target="#myModal-load">Open modal</button>
+
+        <!-- The Modal -->
+        <div class="modal fade" id="myModal-load">
+          <div class="modal-dialog dialog-load">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="modal-content">
+              <section id="post" class="post_show" style="display: none;">
+                <div class="page_A4">
+                    <div class="hea01"> <img style="width: 100%" src="images/top/hea01.png"></div>
+                    <div class="hea02" style="background-color: #fff;">
+                        <div class="container">
+                            <div class="form_info">
+                                <ul class="sele_form row">
+                                    <li class="col-md-6 d-flex">
+                                        <p class="d-flex" id="text_hoten"></p>
+                                    </li>
+                                    <li class="col-md-6 d-flex">
+                                        <p class="d-flex" id="text_ngaysinh"></p>
+                                    </li>
+                                    <li class="col-md-6 d-flex">
+                                        <p class="d-flex" id="text_diemthi"></p>
+                                    </li>
+                                    <li class="col-md-6 d-flex">
+                                        <p class="d-flex" id="text_hinhthuc"></p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="text_nganh d-flex">Đã đạt điểm trúng tuyển bậc Đại học, hệ chính quy, ngành: <p class="d-flex" id="text_nganh"></p></div>
+                        </div>
+                    </div>
+                    <div class="hea03"><img style="width: 100%;" src="images/top/hea02.png"></div>
+                </div>
+            </section>
+
+            </div>
+          </div>
+        </div>
     </section>
 </main>
 <footer id="footer">
@@ -738,7 +750,7 @@
         </div>
     </div>
     <div class = "entry">
-    	<a href="https://www.vxut.edu.vn/dang-ky-xet-tuyen" target="_blank"><span>Đăng ký</span></a>
+        <a href="https://www.vxut.edu.vn/dang-ky-xet-tuyen" target="_blank"><span>Đăng ký</span></a>
     </div>
 
     <div class="content-footer">
@@ -797,6 +809,7 @@
 </div>
 </footer>
 <!--Link js-->
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/wow.min.js"></script>
 <script type="text/javascript" src="js/private.js"></script>
 

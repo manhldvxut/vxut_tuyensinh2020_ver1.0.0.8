@@ -12,6 +12,9 @@
 }
 
 @media (max-width: 767px) {
+    section#post {
+        overflow: auto;
+    }
 	#txt_top{
 		padding: 40px 0;
 	}
