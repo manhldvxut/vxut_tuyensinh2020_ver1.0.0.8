@@ -681,6 +681,38 @@
 	        </div>
     	</div>
     </section>
+    <section id="post" class="post_show" style="display: none;">
+        <div class="page_A4">
+            <div class="hea01"> <img style="width: 100%" src="images/top/hea01.png"></div>
+            <div class="hea02" style="background-color: #fff;">
+                <div class="container">
+                    <div class="form_info">
+                        <ul class="sele_form row">
+                            <li class="col-md-6 d-flex">
+                                <p class="text_sele"> Anh/chị:</p>
+                                <p class="ipu_name font-weight-bold" style="padding-left: 2px;"></p>
+                            </li>
+                            <li class="col-md-6 d-flex">
+                                <p class="text_sele"> Ngày sinh:</p>
+                                <p class="ipu_ngaysinh font-weight-bold" style="padding-left: 2px;">01/02/1990</p>
+                            </li>
+                            <li class="col-md-6 d-flex">
+                                <p class="text_sele"> Điểm xét tuyển:</p>
+                                <p class="ipu_diem font-weight-bold" style="padding-left: 2px;">01/02/1990</p>
+                            </li>
+                            <li class="col-md-6 d-flex">
+                                <p class="text_sele"> Theo hình thức:</p>
+                                <p class="ipu_hinhthuc font-weight-bold" style="padding-left: 2px;">Xét học bạ THPT</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="text_nganh d-flex">Đã đạt điểm trúng tuyển bậc Đại học, hệ chính quy, ngành: <p class="inp_nganh font-weight-bold" style="padding-left:2px "> Quản trị khách sạn</p></div>
+                </div>
+            </div>
+            <div class="hea03"><img style="width: 100%;" src="images/top/hea02.png"></div>
+        </div>
+
+    </section>
 </main>
 <footer>
     <a id="back_to_top" href="javascript:void(0)" class="on">

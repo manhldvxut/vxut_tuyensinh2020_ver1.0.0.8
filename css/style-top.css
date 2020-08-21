@@ -1430,3 +1430,35 @@ body #waiting span {
     }
     
 }
+/*form*/
+.page_A4 {
+  width: 21cm;
+  min-height: 29.7cm;
+  margin: 1cm auto;
+  border: 1px #D3D3D3 solid;
+  background: white;
+}
+@media print {
+  .page_A4 {
+    margin: 0;
+    border: initial;
+    border-radius: initial;
+    width: initial;
+    min-height: initial;
+    box-shadow: initial;
+    background: initial;
+    page-break-after: always;
+  }
+}
+.form_info, .text_nganh {
+    font-family: Times New Roman;
+    font-size: 18px;
+    padding-left: 40px;
+    padding-top: 20px;
+}
+.form_info p {
+    margin-bottom: 0;
+}
+.text_nganh{
+    padding-top: 0;
+}

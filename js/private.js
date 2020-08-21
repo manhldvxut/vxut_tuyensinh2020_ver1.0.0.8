@@ -102,8 +102,22 @@ $(document).ready(function () {
 });
 
 /*tracuuketqua --- manh 20200819*/
+
+function data_dungchung(txtName, txtDate) {
+    var txtName = $("#txtName").val(); //Nhap ten tu form
+
+    txtName = txtName.toLowerCase()   //Doi chu cai dau thanh chu in hoa
+        .split(' ') //Lay du lieu sau dau ngoac
+        .map((s) => s.charAt(0).toUpperCase() + s.substring(1)) //Chu cai dau in hoa
+        .join(' ') // Noi dau cach
+        .replace(/\s\s+/g, ' ')// Loai bo nhieu dau cach o giua cau
+        .replace(/\s+$/, '');  //Loai bo dau cach sau cau
+
+    var txtDate = $("#txtNgaySinhDay").val() + "/" + $("#txtNgaySinhMonth").val() + "/" + $("#txtNgaySinhYear").val();  //Du lieu nhap ngay thang nam sinh tu form
+}
+
 //start
-function waitingid() {
+function waitingid(data_dungchung) {
     var waiting = document.getElementById("waiting");  //Goi Id anh gif
     waiting.style.display = 'block';  // Hien thi anh gif
     
@@ -130,17 +144,7 @@ function waitingid() {
         }, 200)
         return;
     }
-       
-    var txtName = $("#txtName").val(); //Nhap ten tu form
-    
-    txtName = txtName.toLowerCase()   //Doi chu cai dau thanh chu in hoa
-	    .split(' ') //Lay du lieu sau dau ngoac
-	    .map((s) => s.charAt(0).toUpperCase() + s.substring(1)) //Chu cai dau in hoa
-	    .join(' ') // Noi dau cach
-	    .replace(/\s\s+/g, ' ')// Loai bo nhieu dau cach o giua cau
-	    .replace(/\s+$/, '');  //Loai bo dau cach sau cau
-    
-    var txtDate = $("#txtNgaySinhDay").val() + "/" + $("#txtNgaySinhMonth").val() + "/" + $("#txtNgaySinhYear").val();  //Du lieu nhap ngay thang nam sinh tu form
+      
     
     $(document).ready(function() {
     
@@ -174,7 +178,7 @@ function waitingid() {
           for (var j=1; j<lines.length; j++) {
             var values = lines[j].split(','); //lay cac gia tri trong lines
             
-            HoTen = values[1]; //Du lieu ho va Ten
+              HoTen = values[1]; //Du lieu ho va Ten
               Ngaysinh = values[2];  // Du lieu nganh sinh
               dia_chi = values[3]; // Du lieu dia chi
               Tohop_mon = values[4];  // Du lieu To hop mon
@@ -209,7 +213,7 @@ function waitingid() {
                                               "<td>"+ Tohop_mon + "</td>" +
                                               "<td>" + Tong_diem +"</td>" +
                                               "<td>"+ Nganh_xettuyen +"</td>" +
-                                              "<td>" + ket_qua +"</td>" +
+                                              "<td> <input id='show_form' type='button' class='btn btn-primary' value='Xem' onclick='show_sv()'></td>" +
                                           "</tr>" +
                                       "</tbody>" +
                                   "</table>" +
@@ -231,6 +235,7 @@ function waitingid() {
    })
 };
 //end
+/*show form*/
 
 /*Khi ket thuc mua tuyen sinh*/
 // start
