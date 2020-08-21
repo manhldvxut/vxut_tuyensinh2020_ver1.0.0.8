@@ -182,7 +182,6 @@
             </div>
         </div>
     </section>
-    
     <section id = "loiich">
         <div class="container">
             <div class="title text-left">
@@ -689,32 +688,28 @@
                     <div class="form_info">
                         <ul class="sele_form row">
                             <li class="col-md-6 d-flex">
-                                <p class="text_sele"> Anh/chị:</p>
-                                <p class="ipu_name font-weight-bold" style="padding-left: 2px;"></p>
+                                <p class="d-flex" id="text_hoten"></p>
                             </li>
                             <li class="col-md-6 d-flex">
-                                <p class="text_sele"> Ngày sinh:</p>
-                                <p class="ipu_ngaysinh font-weight-bold" style="padding-left: 2px;">01/02/1990</p>
+                                <p class="d-flex" id="text_ngaysinh"></p>
                             </li>
                             <li class="col-md-6 d-flex">
-                                <p class="text_sele"> Điểm xét tuyển:</p>
-                                <p class="ipu_diem font-weight-bold" style="padding-left: 2px;">01/02/1990</p>
+                                <p class="d-flex" id="text_diemthi"></p>
                             </li>
                             <li class="col-md-6 d-flex">
-                                <p class="text_sele"> Theo hình thức:</p>
-                                <p class="ipu_hinhthuc font-weight-bold" style="padding-left: 2px;">Xét học bạ THPT</p>
+                                <p class="d-flex" id="text_hinhthuc"></p>
                             </li>
                         </ul>
                     </div>
-                    <div class="text_nganh d-flex">Đã đạt điểm trúng tuyển bậc Đại học, hệ chính quy, ngành: <p class="inp_nganh font-weight-bold" style="padding-left:2px "> Quản trị khách sạn</p></div>
+                    <div class="text_nganh d-flex">Đã đạt điểm trúng tuyển bậc Đại học, hệ chính quy, ngành: <p class="d-flex" id="text_nganh"></p></div>
                 </div>
             </div>
             <div class="hea03"><img style="width: 100%;" src="images/top/hea02.png"></div>
         </div>
-
+        <div class="back_top"><a href=""><img src="images/top/toppage.png" class="img-fluid" alt=""></a></div>
     </section>
 </main>
-<footer>
+<footer id="footer">
     <a id="back_to_top" href="javascript:void(0)" class="on">
         <span class="fa-stack">
             <i class="fa fa-arrow-up" style=""></i>

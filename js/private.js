@@ -102,22 +102,8 @@ $(document).ready(function () {
 });
 
 /*tracuuketqua --- manh 20200819*/
-
-function data_dungchung(txtName, txtDate) {
-    var txtName = $("#txtName").val(); //Nhap ten tu form
-
-    txtName = txtName.toLowerCase()   //Doi chu cai dau thanh chu in hoa
-        .split(' ') //Lay du lieu sau dau ngoac
-        .map((s) => s.charAt(0).toUpperCase() + s.substring(1)) //Chu cai dau in hoa
-        .join(' ') // Noi dau cach
-        .replace(/\s\s+/g, ' ')// Loai bo nhieu dau cach o giua cau
-        .replace(/\s+$/, '');  //Loai bo dau cach sau cau
-
-    var txtDate = $("#txtNgaySinhDay").val() + "/" + $("#txtNgaySinhMonth").val() + "/" + $("#txtNgaySinhYear").val();  //Du lieu nhap ngay thang nam sinh tu form
-}
-
 //start
-function waitingid(data_dungchung) {
+function waitingid() {
     var waiting = document.getElementById("waiting");  //Goi Id anh gif
     waiting.style.display = 'block';  // Hien thi anh gif
     
@@ -144,7 +130,17 @@ function waitingid(data_dungchung) {
         }, 200)
         return;
     }
-      
+       
+    var txtName = $("#txtName").val(); //Nhap ten tu form
+    
+    txtName = txtName.toLowerCase()   //Doi chu cai dau thanh chu in hoa
+	    .split(' ') //Lay du lieu sau dau ngoac
+	    .map((s) => s.charAt(0).toUpperCase() + s.substring(1)) //Chu cai dau in hoa
+	    .join(' ') // Noi dau cach
+	    .replace(/\s\s+/g, ' ')// Loai bo nhieu dau cach o giua cau
+	    .replace(/\s+$/, '');  //Loai bo dau cach sau cau
+    
+    var txtDate = $("#txtNgaySinhDay").val() + "/" + $("#txtNgaySinhMonth").val() + "/" + $("#txtNgaySinhYear").val();  //Du lieu nhap ngay thang nam sinh tu form
     
     $(document).ready(function() {
     
@@ -213,7 +209,7 @@ function waitingid(data_dungchung) {
                                               "<td>"+ Tohop_mon + "</td>" +
                                               "<td>" + Tong_diem +"</td>" +
                                               "<td>"+ Nganh_xettuyen +"</td>" +
-                                              "<td> <input id='show_form' type='button' class='btn btn-primary' value='Xem' onclick='show_sv()'></td>" +
+                                              "<td> <input target ='_blank' id='show_form' type='button' class='btn btn-primary' value='Xem' onclick='show_sv()'></td>" +
                                           "</tr>" +
                                       "</tbody>" +
                                   "</table>" +
@@ -236,6 +232,95 @@ function waitingid(data_dungchung) {
 };
 //end
 /*show form*/
+function show_sv() {
+    var waiting = document.getElementById("waiting");  //Goi Id anh gif
+    waiting.style.display = 'block';  // Hien thi anh gif
+
+    var txtName = $("#txtName").val(); //Nhap ten tu form
+
+    txtName = txtName.toLowerCase()   //Doi chu cai dau thanh chu in hoa
+        .split(' ') //Lay du lieu sau dau ngoac
+        .map((s) => s.charAt(0).toUpperCase() + s.substring(1)) //Chu cai dau in hoa
+        .join(' ') // Noi dau cach
+        .replace(/\s\s+/g, ' ')// Loai bo nhieu dau cach o giua cau
+        .replace(/\s+$/, '');  //Loai bo dau cach sau cau
+
+    var txtDate = $("#txtNgaySinhDay").val() + "/" + $("#txtNgaySinhMonth").val() + "/" + $("#txtNgaySinhYear").val();  //Du lieu nhap ngay thang nam sinh tu form
+
+    $(document).ready(function () {
+
+        $.ajax({
+            type: "GET",
+            url: "kqts.csv",   // Duong dan CSV file
+            dataType: "text",
+            success: function (data) { processData(data); }, // Doc file thanh cong
+            error: function (data) {						//Doc file khong thanh cong, File khong ton tai
+                setTimeout(function () {
+                    $("#waiting").fadeOut(500);
+                    alert("File không tồn tại, hoặc định dạng file lỗi. Vui lòng kiểm tra lại");
+                }, 200)
+                return;
+            }
+        });
+
+        function processData(data) {  // Khi sccess = true
+
+            var lines = data.split(/\r\n|\n/); // Dem dong
+            var HoTen = [];  // Goi Ho va Ten
+            var Ngaysinh = [];   // Goi ngay sinh
+            var Tong_diem = [];   //Tong diem
+            var Nganh_xettuyen = []; //Nganh xet tuyen
+            var Hinh_thuc = []; //Nganh xet tuyen
+
+            var headings = lines[0].split(',');  // Gia tri header
+
+            for (var j = 1; j < lines.length; j++) {
+                var values = lines[j].split(','); //lay cac gia tri trong lines
+
+                HoTen = values[1]; //Du lieu ho va Ten
+                Ngaysinh = values[2];  // Du lieu nganh sinh
+                Tohop_mon = values[4];  // Du lieu To hop mon
+                Tong_diem = values[5];  //Tong diem
+                Nganh_xettuyen = values[6];  // Du lieu nganh xet tuyen
+                Hinh_thuc = values[7]
+
+                if ((HoTen == txtName) && (Ngaysinh == txtDate)) { // Truong hop Dung
+                    setTimeout(function () {
+                        $("#waiting").fadeOut(500);
+                        document.getElementById('post').style.display = "Block";
+                        document.getElementById('text_hoten').innerHTML = "Anh/chị:" + " <p class='font-weight-bold pd_left'> " + HoTen + "</p>";
+                        document.getElementById('text_ngaysinh').innerHTML = "Ngày sinh:" + " <p class='font-weight-bold pd_left'> " + Ngaysinh + "</p>";
+                        document.getElementById('text_diemthi').innerHTML = "Điểm xét tuyển:" + " <p class='font-weight-bold pd_left'> " + Tong_diem + "</p>";
+                        document.getElementById('text_hinhthuc').innerHTML = "Theo hình thức:" + " <p class='font-weight-bold pd_left'> " + Hinh_thuc + "</p>";
+                        document.getElementById('text_nganh').innerHTML = " <p class='font-weight-bold pd_left'> " + Nganh_xettuyen + "</p>";
+
+                        document.getElementsByClassName("bg-fix")[0].style.display = "none";
+                        document.getElementById('txt_top').style.display = "none";
+                        document.getElementById('top').style.display = "none";
+                        document.getElementById('contribution').style.display = "none";
+                        document.getElementById('loiich').style.display = "none";
+                        document.getElementById('quyenloi').style.display = "none";
+                        document.getElementById('chitieu').style.display = "none";
+                        document.getElementById('pt_ts').style.display = "none";
+                        document.getElementById('recruit').style.display = "none";
+                        document.getElementById('hp_hb').style.display = "none";
+                        document.getElementById('wpb_wrapper').style.display = "none";
+                        document.getElementById('box-blog').style.display = "none";
+                        document.getElementById('api').style.display = "none";
+                        document.getElementById('tracuu').style.display = "none";
+                        document.getElementById('footer').style.display = "none";
+                        
+                    }, 200)
+                    return;
+                    
+
+
+                }
+                
+            }
+        }
+    })
+};
 
 /*Khi ket thuc mua tuyen sinh*/
 // start

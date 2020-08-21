@@ -1462,3 +1462,22 @@ body #waiting span {
 .text_nganh{
     padding-top: 0;
 }
+.pd_left{
+    padding-left: 8px;
+}
+p#text_hoten .pd_left {
+    text-transform: uppercase;
+}
+.back_top {
+    position: fixed;
+    bottom: 40%;
+    right: 10%;
+    z-index: 111;
+    background: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
