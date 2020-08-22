@@ -143,7 +143,6 @@ function waitingid() {
     var txtDate = $("#txtNgaySinhDay").val() + "/" + $("#txtNgaySinhMonth").val() + "/" + $("#txtNgaySinhYear").val();  //Du lieu nhap ngay thang nam sinh tu form
 
     $(document).ready(function () {
-
         $.ajax({
             type: "GET",
             url: "kqts.csv",   // Duong dan CSV file
@@ -159,7 +158,6 @@ function waitingid() {
         });
 
         function processData(data) {  // Khi sccess = true
-
             var lines = data.split(/\r\n|\n/); // Dem dong
             var HoTen = [];  // Goi Ho va Ten
             var Ngaysinh = [];   // Goi ngay sinh
@@ -168,7 +166,6 @@ function waitingid() {
             var Tong_diem = [];   //Tong diem
             var Nganh_xettuyen = []; //Nganh xet tuyen
             var ket_qua = [];    //giay bao ket qua
-
             var headings = lines[0].split(',');  // Gia tri header
 
             for (var j = 1; j < lines.length; j++) {
@@ -294,27 +291,8 @@ function show_sv() {
                         document.getElementById('text_hinhthuc').innerHTML = "Theo hình thức:" + " <p class='font-weight-bold pd_left'> " + Hinh_thuc + "</p>";
                         document.getElementById('text_nganh').innerHTML = " <p class='font-weight-bold pd_left'> " + Nganh_xettuyen + "</p>";
 
-                        // document.getElementsByClassName("bg-fix")[0].style.display = "none";
-                        // document.getElementById('txt_top').style.display = "none";
-                        // document.getElementById('top').style.display = "none";
-                        // document.getElementById('contribution').style.display = "none";
-                        // document.getElementById('loiich').style.display = "none";
-                        // document.getElementById('quyenloi').style.display = "none";
-                        // document.getElementById('chitieu').style.display = "none";
-                        // document.getElementById('pt_ts').style.display = "none";
-                        // document.getElementById('recruit').style.display = "none";
-                        // document.getElementById('hp_hb').style.display = "none";
-                        // document.getElementById('wpb_wrapper').style.display = "none";
-                        // document.getElementById('box-blog').style.display = "none";
-                        // document.getElementById('api').style.display = "none";
-                        // document.getElementById('tracuu').style.display = "none";
-                        // document.getElementById('footer').style.display = "none";
-
                     }, 200)
                     return;
-
-
-
                 }
 
             }
@@ -324,7 +302,6 @@ function show_sv() {
     $('.clc-popup').click();
 };
 
-
 /*Khi ket thuc mua tuyen sinh*/
 // start
 var current = new Date();  // thoi gian hien tai
@@ -333,3 +310,17 @@ if ((month < 5) || (month > 12)) {  // thang < 5 hoac > 12 thi layout tra cuu kh
     document.getElementById("tracuu").style.display = "none";
 }
 // End
+
+/* tang option year*/
+//start
+var min = new Date().getFullYear(),
+    max = min - 17,
+    select = document.getElementById('txtNgaySinhYear');
+
+for (var i = max; i<= (min-10); i++){
+    var opt = document.createElement('option');
+    opt.value = i;
+    opt.innerHTML = i;
+    select.appendChild(opt);
+}
+//end
